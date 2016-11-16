@@ -1,25 +1,30 @@
+var defaultColor = "blue";
 
+function loadOptions() {
+	var favColor = localStorage["favColor"];
 
-function showList () {
-	var ol = document.getElementById('blacklist');
+	// valid colors are red, blue, green and yellow
+	if (favColor == undefined || (favColor != "red" && favColor != "blue" && favColor != "green" && favColor != "yellow")) {
+		favColor = defaultColor;
+	}
 
-	// For...
-		// ol. addChild ....
-
+	var select = document.getElementById("color");
+	for (var i = 0; i < select.children.length; i++) {
+		var child = select.children[i];
+			if (child.value == favColor) {
+			child.selected = "true";
+			break;
+		}
+	}
 }
 
-function addItem (item) {
-	hideList.push(item);
-	localStorage.setItem("rutenBlackList", hideList);
+function saveOptions() {
+	var select = document.getElementById("color");
+	var color = select.children[select.selectedIndex].value;
+	localStorage["favColor"] = color;
 }
 
-
-function onInit () {
-	var hideList = localStorage.getItem("rutenBlackList");
-	console.log(hidelist);
-	showList(hideList);
+function eraseOptions() {
+	localStorage.removeItem("favColor");
+	location.reload();
 }
-
-
-
-onInit();

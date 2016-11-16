@@ -1,24 +1,19 @@
-<!DOCTYPE html>
-
 <html>
-  <head>
-    <meta charset="utf-8">
-  </head>
-
-<body>
-  <form>
-    <fieldset>
-      <legend>Options</legend>
-      <ol id = "blacklist"> 您目前的露天黑名單
-        <li id = "nobody"> 目前沒有人 </li>
-      </ol>
-      <p>設定您的黑名單</p>
-      <input type="text" id="colour" placeholder="加入新賣家">
-      <button type="submit">存檔</button>
-    </fieldset>
-  </form>
-  <script src="js/angular.min.js"></script>
-  <script src="options.js"></script>
+<head>
+  <title>Options for Color Chooser</title>
+  <script type="text/javascript" src="options.js"></script>
+</head>
+<body onload="loadOptions()">
+  <h1>Favorite Color</h1>
+  <select id="color">
+    <option value="blue">Blue</option>
+    <option value="red">Red</option>
+    <option value="green">Green</option>
+    <option value="yellow">Yellow</option>
+  </select>
+  <br />
+  <button onclick="saveOptions()">Save</button>
+  <br />
+  <button onclick="eraseOptions()">Restore default</button>
 </body>
-
 </html>

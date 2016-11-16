@@ -1,7 +1,4 @@
 document.body.style.border = "5px solid gold";
-
-console.log("This is an informational message");
-
 var invis = function(os, n) {
 	for (var i = 0; i < os.length; i++) {
 		os[i].style.opacity = n;
@@ -35,6 +32,8 @@ if (typeof(Storage) !== "undefined") {
     alert("Your Browser has no local storage");
 }
 
+console.log(hideList);
+hideList = hideList || [];
 
 var re = new RegExp(hideList.join("|"));
 
@@ -67,5 +66,4 @@ for (var i = 0; i < imgs.length; i++) {
 	}
 } 
 
-
-console.log('ccc');
+// console.log('ccc');
