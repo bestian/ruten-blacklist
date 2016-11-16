@@ -1,30 +1,57 @@
-var defaultColor = "blue";
+console.log("Loaded");
 
-function loadOptions() {
-	var favColor = localStorage["favColor"];
-
-	// valid colors are red, blue, green and yellow
-	if (favColor == undefined || (favColor != "red" && favColor != "blue" && favColor != "green" && favColor != "yellow")) {
-		favColor = defaultColor;
-	}
-
-	var select = document.getElementById("color");
-	for (var i = 0; i < select.children.length; i++) {
-		var child = select.children[i];
-			if (child.value == favColor) {
-			child.selected = "true";
-			break;
-		}
-	}
+function save_Black () {
+  var black = document.getElementById('black').value;
+  chrome.storage.sync.set({
+    rutenBlackList: black
+  }, function() {
+    // Update status to let user know options were saved.
+    var status = document.getElementById('status');
+    status.textContent = 'Options saved.' + black;
+    setTimeout(function() {
+      status.textContent = '';
+    }, 750);
+  });
 }
 
-function saveOptions() {
-	var select = document.getElementById("color");
-	var color = select.children[select.selectedIndex].value;
-	localStorage["favColor"] = color;
+
+
+//.......
+
+
+// Saves options to chrome.storage.sync.
+function save_options() {
+  var color = document.getElementById('color').value;
+  var likesColor = document.getElementById('like').checked;
+  chrome.storage.sync.set({
+    favoriteColor: color,
+    likesColor: likesColor
+  }, function() {
+    // Update status to let user know options were saved.
+    var status = document.getElementById('status');
+    status.textContent = 'Options saved.';
+    setTimeout(function() {
+      status.textContent = '';
+    }, 750);
+  });
 }
 
-function eraseOptions() {
-	localStorage.removeItem("favColor");
-	location.reload();
+// Restores select box and checkbox state using the preferences
+// stored in chrome.storage.
+function restore_options() {
+  // Use default value color = 'red' and likesColor = true.
+  chrome.storage.sync.get({
+    favoriteColor: 'red',
+    likesColor: true
+  }, function(items) {
+    document.getElementById('color').value = items.favoriteColor;
+    document.getElementById('like').checked = items.likesColor;
+  });
 }
+document.addEventListener('DOMContentLoaded', restore_options);
+document.getElementById('save').addEventListener('click',
+    save_options);
+
+
+document.getElementById('saveBlack').addEventListener('click',
+    save_Black);

@@ -10,6 +10,8 @@
     "48": "icons/border-48.png"
   },
 
+  "permissions": ["tabs", "storage"],
+
   "content_scripts": [
     {
       "matches": 
@@ -22,10 +24,12 @@
     }
   ],
 
+  "optional_permissions": ["tabs"],
   "options_page": "options.html",
   "options_ui": {
     "page": "options.html",
-    "chrome_style": true
+    "chrome_style": true,
+    "open_in_tab": true
   },
 
   "icons": {
