@@ -1,4 +1,4 @@
-document.body.style.border = "5px solid gold"; // blue
+document.body.style.border = "5px solid gold";
 
 console.log("This is an informational message");
 
@@ -28,6 +28,9 @@ var hideList = new Array;
 
 if (typeof(Storage) !== "undefined") {
 	hideList = localStorage.getItem("rutenBlackList");
+	if (!hideList) {
+		localStorage.setItem("rutenBlackList",[]);
+	}
 } else {
     alert("Your Browser has no local storage");
 }

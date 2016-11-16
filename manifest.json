@@ -23,8 +23,10 @@
   ],
 
   "options_ui": {
-      "page": "options.html"
+    "page": "options.html",
+    "chrome_style": true,
   },
+  "options_page": "options.html",
 
   "applications": {
     "gecko": {

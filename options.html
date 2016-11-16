@@ -9,11 +9,15 @@
   <form>
     <fieldset>
       <legend>Options</legend>
-      <p>Favourite colour</p>
-      <input type="text" id="colour" >
-      <button type="submit">Save</button>
+      <ol id = "blacklist"> 您目前的露天黑名單
+        <li id = "nobody"> 目前沒有人 </li>
+      </ol>
+      <p>設定您的黑名單</p>
+      <input type="text" id="colour" placeholder="加入新賣家">
+      <button type="submit">存檔</button>
     </fieldset>
   </form>
+  <script src="js/angular.min.js"></script>
   <script src="options.js"></script>
 </body>
 

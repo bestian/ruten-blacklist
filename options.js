@@ -1,14 +1,25 @@
-function saveOptions(e) {
-  chrome.storage.local.set({
-    colour: document.querySelector("#colour").value
-  });
+
+
+function showList () {
+	var ol = document.getElementById('blacklist');
+
+	// For...
+		// ol. addChild ....
+
 }
 
-function restoreOptions() {
-  chrome.storage.local.get('colour', (res) => {
-    document.querySelector("#colour").value = res.colour || 'Firefox red';
-  });
+function addItem (item) {
+	hideList.push(item);
+	localStorage.setItem("rutenBlackList", hideList);
 }
 
-document.addEventListener('DOMContentLoaded', restoreOptions);
-document.querySelector("form").addEventListener("submit", saveOptions);
+
+function onInit () {
+	var hideList = localStorage.getItem("rutenBlackList");
+	console.log(hidelist);
+	showList(hideList);
+}
+
+
+
+onInit();
