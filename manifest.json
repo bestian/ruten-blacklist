@@ -1,0 +1,43 @@
+{
+
+  "manifest_version": 2,
+  "name": "foxtest",
+  "version": "1.0",
+
+  "description": "Adds a solid gold border",
+
+  "icons": {
+    "48": "icons/border-48.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": 
+      ["*://www.ruten.com.tw/*", 
+       "*://search.ruten.com.tw/*",
+       "*://class.ruten.com.tw/*",
+       "*://*.ruten.com.tw/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+
+  "options_ui": {
+      "page": "options.html"
+  },
+
+  "applications": {
+    "gecko": {
+      "id": "borderify@example.com",
+      "strict_min_version": "42.0",
+      "strict_max_version": "50.*",
+      "update_url": "https://example.com/updates.json"
+    }
+  },
+
+  "icons": {
+    "48": "icons/border-48.png",
+    "96": "icons/border-96.png"
+  }
+
+}
